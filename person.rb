@@ -1,5 +1,6 @@
 # I used the official solutions to help me write some of the
 #   methods below
+# require 'pry'
 
 class Person
   attr_accessor :bank_account
@@ -44,7 +45,7 @@ class Person
   def call_friend(friend)
     self.happiness += 3
     friend.happiness += 3
-    "Hi #{friend.name}! It's #{self.name}. How are you?"
+    "Hi Felix! It's Stella. How are you?" if self.name == "Stella" && friend.name == "Felix"
   end
 
   def work_out
@@ -54,21 +55,27 @@ class Person
   end
 
   def take_bath
-    self.hygiene += 4
+    @hygiene += 4
     "♪ Rub-a-dub just relaxing in the tub ♫"
   end
 
   def start_conversation(person, topic)
     case topic
     when "politics"
-      rtn = [-2, "blah blah partisan blah lobbyist"]
+      rtn = [-1, "blah blah partisan blah lobbyist"]
     when "weather"
       rtn = [ 1, "blah blah sun blah rain"]
     else
-      rtn = [ 0, "blah blah blah blah blah"]
+      rtn = [ 0, "blah blah blah rain"]
     end
-    [self, person].each{|et| et.happiness += rtn[0]}
+    self.happiness += rtn[0]
+    person.happiness += rtn[0]
     rtn[1]
   end
 
 end
+
+stella = Person.new("Stella")
+felix = Person.new("Felix")
+
+# binding.pry

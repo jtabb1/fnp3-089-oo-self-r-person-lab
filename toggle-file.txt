@@ -1,0 +1,8 @@
+require "./person.rb"
+stella = Person.new("Stella")
+felix = Person.new("Felix")
+
+stella.happiness = 9
+stella.happiness
+stella.work_out
+stella.happiness
